@@ -1,0 +1,76 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Datasets and extracted data (keep dataset configuration files)
+dataset/
+datasets/
+data/
+!**/data.yaml
+!**/data.yml
+
+# Training outputs and experiment tracking
+runs/
+wandb/
+mlruns/
+lightning_logs/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+
+# Common generated inference/output files
+predictions/
+inference_output/
+outputs/
+*.mp4
+*.avi
+
+# Keep ONNX models tracked by default so the demo can run.
+# If a model is too large or should not be distributed, uncomment:
+# *.onnx
+
+# If your camera captures images locally, ignore them:
+captures/
+camera_output/
