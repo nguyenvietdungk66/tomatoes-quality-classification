@@ -81,7 +81,7 @@ The ONNX model is a trained artifact. Its availability, size, training data, and
 Run the project's camera entry point from the repository root, for example:
 
 ```bash
-python onnx/camera.py
+python onnx/real_time_onnx.py
 ```
 
 If your actual entry point or folder structure differs, use the corresponding script and update this command.
