@@ -19,7 +19,7 @@ The structure below is illustrative. Adjust it to match the actual folders in th
 
 ```text
 Project YOLO detection/
-├── core/
+├── onnx/
 │   ├── camera.py
 │   ├── onnx_engine.py
 │   └── postprocessing.py
@@ -81,7 +81,7 @@ The ONNX model is a trained artifact. Its availability, size, training data, and
 Run the project's camera entry point from the repository root, for example:
 
 ```bash
-python core/camera.py
+python onnx/camera.py
 ```
 
 If your actual entry point or folder structure differs, use the corresponding script and update this command.
