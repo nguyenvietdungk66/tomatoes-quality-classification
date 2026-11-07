@@ -1,3 +1,35 @@
+# =====================================================
+# HIKROBOT MVS SDK INSTALLATION REQUIREMENT
+# =====================================================
+#
+# IMPORTANT:
+# Before using a Hikrobot industrial camera, install
+# Hikrobot MVS (Machine Vision Software).
+#
+# Download:
+# https://www.hikrobotics.com/en/machinevision/service/download/
+#
+# After installation, make sure the Python SDK exists at:
+#
+# C:\Program Files (x86)\MVS\Development\Samples\Python\MvImport
+#
+# or:
+#
+# C:\Program Files\MVS\Development\Samples\Python\MvImport
+#
+# Required SDK files:
+# - MvCameraControl_class.py
+# - CameraParams_header.py
+# - MvErrorDefine_const.py
+# - PixelType_header.py
+#
+# NOTE:
+# 1. Close MVS Client before running this Python application
+#    if the client is currently controlling the camera.
+# 2. Make sure the MVS SDK and Python architecture are compatible.
+# 3. The MVS installation is required only for Hikrobot cameras.
+#
+# =====================================================
 
 import sys
 import os
