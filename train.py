@@ -15,7 +15,7 @@ def main():
     IMAGE_SIZE = 640
     BATCH_SIZE = 32
 
-    DEVICE = 0       # GPU 0; dùng "cpu" nếu không có GPU
+    DEVICE = 0       
     WORKERS = 4
 
     PROJECT = "runs/tomato_detection"
