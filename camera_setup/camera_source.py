@@ -6,7 +6,7 @@ Supported sources:
 - "hikrobot": Hikrobot industrial camera via MVS SDK and hikrobot_camera.py.
 
 Place your existing Hikrobot SDK wrapper at:
-    camera_devices/hikrobot_camera.py
+    camera_setup/hikrobot_camera.py
 """
 
 import cv2
