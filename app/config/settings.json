@@ -1,0 +1,13 @@
+{
+    "inspection": {
+        "required_frames": 1,
+        "empty_frames_to_release": 1,
+        "required_detections": 3
+    },
+    "detection": {
+        "confidence_threshold": 0.5,
+        "iou_threshold": 0.5,
+        "input_size": 640,
+        "max_detections": 300
+    }
+}
