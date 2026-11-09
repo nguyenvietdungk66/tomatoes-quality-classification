@@ -12,9 +12,10 @@ This project aims to develop an intelligent computer vision system for automated
 
 The application detects tomatoes in camera frames and classifies them into two quality categories:
 
-| Class | Label | Class to idx |
-|🍅| Fresh Tomato | 0 |
-|🍂| Rotten Tomato | 1 |
+| Class | Label | Class ID |
+|:---:|:---|:---:|
+| 🍅 | Fresh Tomato | 0 |
+| 🍂 | Rotten Tomato | 1 |
 
 
 Unlike a standalone object detection model, this project integrates the trained model into a complete desktop application with live camera inspection, real-time visualization, inspection statistics, and historical data management.
