@@ -87,20 +87,7 @@ visualization, inspection statistics, and inspection history.
           Dashboard / Live / History
 ```
 
-## 4. Technology Stack
-
-  Component              Technology
-  ---------------------- -------------------------------
-  Programming Language   Python
-  Deep Learning          PyTorch, Ultralytics YOLO26
-  Model Deployment       ONNX, ONNX Runtime
-  Computer Vision        OpenCV
-  GUI Framework          PySide6 / Qt
-  Industrial Camera      Hikrobot MVS SDK
-  Database               SQLite
-  Multithreading         QThread, Qt Signals and Slots
-
-## 5. Dataset Preparation
+## 4. Dataset Preparation
 
 A custom object detection dataset was prepared for two tomato quality
 classes.
@@ -186,9 +173,8 @@ individual model inference. The two values should not be expected to be
 exact reciprocals because they may be measured at different stages of
 the pipeline.
 
-## 8. Application Screenshots
+## 8. Application Interface
 
-Add screenshots of the application in the sections below.
 
 ### Dashboard
 
@@ -229,16 +215,30 @@ the final repository contents.
 
 ``` text
 tomatoes-quality-classification/
-├── app/                    # Desktop application and UI
-├── core/                   # Core processing components
-├── data/                   # Data-related resources
-├── dataset_module/         # Dataset processing utilities
-├── model/                  # Model files (e.g. best.onnx)
-├── scripts/                # Supporting scripts
-├── main.py                 # Application entry point (verify filename)
-├── requirements.txt        # Python dependencies
+├── app/
+│   ├── camera_setup/       # Camera setup page and related application components
+│   ├── config/             # Application configuration
+│   ├── core/               # Application-level core components
+│   ├── data/               # Application data resources
+│   ├── database/           # Database operations and storage
+│   ├── inspection/         # Inspection workflow and logic
+│   ├── services/           # Application services
+│   ├── ui/                 # Desktop user interface
+│   └── main.py             # Application package entry point
+├── camera_setup/           # Camera integration and camera libraries
+├── core/                   # Core computer vision and inference components
+├── images/                 # Images and visual assets
+├── model/                  # Model files, including the deployed ONNX model
+├── scripts/                # Supporting and utility scripts
+├── test_images/            # Images used for testing
+├── .gitignore
+├── LICENSE
 ├── README.md
-└── .gitignore
+├── main.py                 # Project entry point
+├── requirements.txt        # Python dependencies
+├── samples.py              # Sample/demo script
+├── test.py                 # Testing script
+└── train.py                # Model training script
 ```
 
 ## 10. Installation
