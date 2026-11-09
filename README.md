@@ -1,38 +1,60 @@
-# YOLO Object Detection
+# Tomato Quality Inspection System
 
-A Python-based YOLO object-detection project with an ONNX Runtime inference pipeline and live camera support.
+An AI-powered desktop application for automated tomato quality inspection using Deep Learning and industrial machine vision.
 
-> **Project status:** Core inference and camera detection have been tested. The application interface and further deployment/integration work may be developed separately.
+The system integrates a custom-trained YOLO26 object detection model, ONNX Runtime inference engine, and Hikrobot industrial camera to detect and classify fresh and rotten tomatoes in real time.
 
-## Features
 
-- Run a trained YOLO model exported to ONNX.
-- Perform model inference through ONNX Runtime.
-- Decode model outputs and apply detection post-processing.
-- Capture frames from a webcam or compatible camera.
-- Display detection results in real time.
-- Keep inference, post-processing, and camera capture in separate modules.
+
+## 1. Project Overview
+
+This project aims to develop an intelligent computer vision system for automated tomato quality inspection, demonstrating an end-to-end workflow from model development and optimization to real-time industrial camera integration and desktop application deployment.
+
+The application detects tomatoes in camera frames and classifies them into two quality categories:
+
+```Fresh Tomato```: Tomatoes identified as fresh and suitable for further processing.
+
+```Rotten Tomato```: Tomatoes identified as rotten or unsuitable for further processing.
+
+Unlike a standalone object detection model, this project integrates the trained model into a complete desktop application with live camera inspection, real-time visualization, inspection statistics, and historical data management.
 
 ## Project structure
 
 The structure below is illustrative. Adjust it to match the actual folders in this repository.
 
+## 2. System Architecture
+
+The application follows a modular architecture that separates camera acquisition, AI inference, inspection processing, data management, and user interface components.
+
 ```text
-Project YOLO detection/
-├── onnx/
-│   ├── camera.py
-│   ├── onnx_engine.py
-│   └── postprocessing.py
-├── models/
-│   └── best.onnx
-├── dataset_module/
-│   ├── train.py
-│   └── data/
-├── frontend/
-├── requirements.txt
-├── .gitignore
-├── LICENSE
-└── README.md
+ Industrial Camera
+              (Hikrobot / USB)
+                     |
+                     v
+              Camera Acquisition
+                     |
+                     v
+               Frame Processing
+                     |
+                     v
+              YOLO26n ONNX Model
+                     |
+                     v
+              Detection Post-processing
+                     |
+                     v
+              Inspection Management
+                     |
+              +------+------+
+              |             |
+              v             v
+        Live Visualization  Inspection Results
+              |             |
+              v             v
+           PySide6 UI     SQLite Database
+              |
+              v
+         Dashboard / History
 ```
 
 ## Requirements
