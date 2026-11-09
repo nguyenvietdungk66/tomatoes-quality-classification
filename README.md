@@ -18,10 +18,10 @@ camera integration, and desktop application development.
 The application detects tomatoes in camera frames and classifies them
 into two quality categories:
 
-  | Class | Label        |    Class ID    |
-  ------- --------------- ----------
-  |  🍅   |   Fresh Tomato   |    0    |
-  |  🍂   |   Rotten Tomato  |    1    |
+| Class | Label | Class ID |
+|:---:|:---|:---:|
+| 🍅 | Fresh Tomato | 0 |
+| 🍂 | Rotten Tomato | 1 |
 
 The desktop application provides live inspection, detection
 visualization, inspection statistics, and inspection history.
@@ -188,9 +188,11 @@ the pipeline.
 ### Live Inspection
 
 Live inspection on webcam
+
 ![Webcam](images/live_inspection.png)
 
 Live inspection on hikrobot camera
+
 ![Dashboard](images/hikrobot.png)
 
 ### Inspection History
@@ -305,13 +307,13 @@ After launching the application:
 
 ## 11. Technology Stack
 
-  Component              Technology
-  ---------------------- -------------------------------
-  Programming Language   Python
-  Deep Learning          PyTorch, Ultralytics YOLO26
-  Model Deployment       ONNX, ONNX Runtime
-  Computer Vision        OpenCV
-  GUI Framework          PySide6 / Qt
-  Industrial Camera      Hikrobot MVS SDK
-  Database               SQLite
-  Multithreading         QThread, Qt Signals and Slots
+  | Component | Technology |
+|---|---|
+| Programming Language | Python |
+| Deep Learning | PyTorch, Ultralytics YOLO26 |
+| Model Deployment | ONNX, ONNX Runtime |
+| Computer Vision | OpenCV |
+| Desktop Application | PySide6 |
+| Industrial Camera | Hikrobot MVS SDK |
+| Data Storage | SQLite |
+|  Multithreading | QThread, Qt Signals and Slots |
