@@ -178,12 +178,7 @@ the pipeline.
 
 ### Dashboard
 
-```{=html}
-<!-- Replace with your dashboard screenshot -->
-```
-```{=html}
-<!-- ![Dashboard](docs/images/dashboard.png) -->
-```
+![Dashboard](tomatoes-quality-classification/images/dashboard.png)
 ### Camera Setup
 
 ```{=html}
