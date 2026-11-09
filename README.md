@@ -97,7 +97,7 @@ annotations. - Checking image-label consistency. - Identifying and
 removing invalid or missing-label samples. - Preparing training,
 validation, and test splits.
 
-[Dataset Format](images/data_format.png)
+![Dataset Format](images/data_format.png)
 
 
 ## 5. Model Training and Evaluation
