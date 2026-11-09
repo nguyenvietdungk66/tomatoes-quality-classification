@@ -11,16 +11,14 @@ The system integrates a custom-trained YOLO26 object detection model, ONNX Runti
 This project aims to develop an intelligent computer vision system for automated tomato quality inspection, demonstrating an end-to-end workflow from model development and optimization to real-time industrial camera integration and desktop application deployment.
 
 The application detects tomatoes in camera frames and classifies them into two quality categories:
+| Class | Label | Class to idx |
 
-```Fresh Tomato```: Tomatoes identified as fresh and suitable for further processing.
+|🍅|```|🍅| Fresh Tomato|```| 0 |
 
-```Rotten Tomato```: Tomatoes identified as rotten or unsuitable for further processing.
+|🍂| ```Rotten Tomato|```| 1 |
+
 
 Unlike a standalone object detection model, this project integrates the trained model into a complete desktop application with live camera inspection, real-time visualization, inspection statistics, and historical data management.
-
-## Project structure
-
-The structure below is illustrative. Adjust it to match the actual folders in this repository.
 
 ## 2. System Architecture
 
