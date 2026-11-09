@@ -1,140 +1,334 @@
-# Tomato Quality Inspection System
+# 🍅 Tomato Quality Inspection System
 
-An AI-powered desktop application for automated tomato quality inspection using Deep Learning and industrial machine vision.
+An AI-powered desktop application for automated tomato quality
+inspection using Deep Learning and industrial machine vision.
 
-The system integrates a custom-trained YOLO26 object detection model, ONNX Runtime inference engine, and Hikrobot industrial camera to detect and classify fresh and rotten tomatoes in real time.
+The system combines a custom-trained YOLO26n object detection model,
+ONNX Runtime inference, and industrial camera integration to detect and
+classify fresh and rotten tomatoes in real time.
 
-
+------------------------------------------------------------------------
 
 ## 1. Project Overview
 
-This project aims to develop an intelligent computer vision system for automated tomato quality inspection, demonstrating an end-to-end workflow from model development and optimization to real-time industrial camera integration and desktop application deployment.
+This project demonstrates an end-to-end Computer Vision workflow, from
+dataset preparation and model training to model optimization, industrial
+camera integration, and desktop application development.
 
-The application detects tomatoes in camera frames and classifies them into two quality categories:
+The application detects tomatoes in camera frames and classifies them
+into two quality categories:
 
-| Class | Label | Class ID |
-|:---:|:---|:---:|
-| 🍅 | Fresh Tomato | 0 |
-| 🍂 | Rotten Tomato | 1 |
+   Class  Label            Class ID
+  ------- --------------- ----------
+    🍅    Fresh Tomato        0
+    🍂    Rotten Tomato       1
 
+The desktop application provides live inspection, detection
+visualization, inspection statistics, and inspection history.
 
-Unlike a standalone object detection model, this project integrates the trained model into a complete desktop application with live camera inspection, real-time visualization, inspection statistics, and historical data management.
+## 2. Key Features
 
-## 2. System Architecture
+### AI-Based Tomato Detection
 
-The application follows a modular architecture that separates camera acquisition, AI inference, inspection processing, data management, and user interface components.
+-   Custom-trained YOLO26n object detection model.
+-   Detection and classification of fresh and rotten tomatoes.
+-   Bounding-box visualization with class labels and confidence scores.
 
-```text
- Industrial Camera
-              (Hikrobot / USB)
-                     |
-                     v
-              Camera Acquisition
-                     |
-                     v
-               Frame Processing
-                     |
-                     v
-              YOLO26n ONNX Model
-                     |
-                     v
-              Detection Post-processing
-                     |
-                     v
-              Inspection Management
-                     |
-              +------+------+
-              |             |
-              v             v
-        Live Visualization  Inspection Results
-              |             |
-              v             v
-           PySide6 UI     SQLite Database
-              |
-              v
-         Dashboard / History
+### Real-Time Camera Integration
+
+-   Hikrobot industrial camera support through the MVS SDK.
+-   USB webcam support through OpenCV.
+-   Live camera streaming and real-time inference.
+-   Asynchronous camera acquisition and processing.
+
+### Desktop Application
+
+-   Dark-themed graphical user interface built with PySide6.
+-   Dashboard for inspection statistics.
+-   Camera setup and device configuration.
+-   Live inspection with real-time detection visualization.
+-   Inspection history and session management.
+
+### Model Deployment
+
+-   Export from PyTorch to ONNX format.
+-   GPU-accelerated inference with ONNX Runtime CUDA Execution Provider.
+-   CPU execution fallback where supported.
+-   Performance benchmarking for inference latency and processing
+    throughput.
+
+## 3. System Architecture
+
+``` text
+       Hikrobot Industrial Camera / USB Camera
+                         |
+                         v
+                 Camera Acquisition
+                         |
+                         v
+                  Frame Processing
+                         |
+                         v
+                  YOLO26n ONNX
+                         |
+                         v
+               Detection Post-processing
+                         |
+                         v
+                Inspection Management
+                    /          \
+                   v            v
+          Live Visualization  Result Storage
+                   |            |
+                   v            v
+              PySide6 UI     SQLite Database
+                   |
+                   v
+          Dashboard / Live / History
 ```
 
-## Requirements
+## 4. Technology Stack
 
-- Windows, Linux, or another OS supported by the installed Python packages
-- Python 3.10+ (use the version tested by your project environment)
-- A webcam or compatible camera for live inference
-- A trained YOLO model exported to ONNX
+  Component              Technology
+  ---------------------- -------------------------------
+  Programming Language   Python
+  Deep Learning          PyTorch, Ultralytics YOLO26
+  Model Deployment       ONNX, ONNX Runtime
+  Computer Vision        OpenCV
+  GUI Framework          PySide6 / Qt
+  Industrial Camera      Hikrobot MVS SDK
+  Database               SQLite
+  Multithreading         QThread, Qt Signals and Slots
 
-Install the dependencies listed in `requirements.txt`:
+## 5. Dataset Preparation
 
-```bash
+A custom object detection dataset was prepared for two tomato quality
+classes.
+
+Dataset preparation included: - Organizing images and YOLO-format
+annotations. - Checking image-label consistency. - Identifying and
+removing invalid or missing-label samples. - Preparing training,
+validation, and test splits.
+
+### Dataset Classes
+
+   Class  Label            Class ID
+  ------- --------------- ----------
+    🍅    Fresh Tomato        0
+    🍂    Rotten Tomato       1
+
+## 6. Model Training and Evaluation
+
+The YOLO26n model was selected to balance detection accuracy and
+computational efficiency for real-time deployment.
+
+### Training Configuration
+
+  Parameter             Value
+  ------------------ ------------
+  Model                YOLO26n
+  Input Image Size    640 × 640
+  Epochs                 100
+  Batch Size              32
+  Training Device     NVIDIA GPU
+
+### Test Dataset Results
+
+The trained model was evaluated on an independent test dataset.
+
+  Metric        Result
+  ----------- --------
+  Precision     92.17%
+  Recall        95.77%
+  mAP@50        96.95%
+  mAP@50-95     95.01%
+
+## 7. ONNX Deployment and Performance
+
+The trained PyTorch model was exported to ONNX format and integrated
+into the application using ONNX Runtime.
+
+``` text
+YOLO26n (PyTorch)
+       |
+       v
+    ONNX Export
+       |
+       v
+    best.onnx
+       |
+       v
+  ONNX Runtime
+       |
+       v
+ CUDA / CPU Execution
+       |
+       v
+ Real-Time Detection
+```
+
+### Real-Time Performance Benchmark
+
+The integrated application was tested with a Hikrobot industrial camera
+during a one-hour continuous operation test.
+
+  Metric                               Result
+  -------------------------- ----------------
+  Processing Throughput             27.94 FPS
+  Inference Latency            23.92 ms/frame
+  Continuous Test Duration             1 hour
+  Inference Engine               ONNX Runtime
+
+**Note:** Processing throughput and inference latency are different
+measurements. Throughput represents the number of frames processed per
+second, while inference latency measures the time required for an
+individual model inference. The two values should not be expected to be
+exact reciprocals because they may be measured at different stages of
+the pipeline.
+
+## 8. Application Screenshots
+
+Add screenshots of the application in the sections below.
+
+### Dashboard
+
+```{=html}
+<!-- Replace with your dashboard screenshot -->
+```
+```{=html}
+<!-- ![Dashboard](docs/images/dashboard.png) -->
+```
+### Camera Setup
+
+```{=html}
+<!-- Replace with your camera setup screenshot -->
+```
+```{=html}
+<!-- ![Camera Setup](docs/images/camera_setup.png) -->
+```
+### Live Inspection
+
+```{=html}
+<!-- Replace with your live inspection screenshot -->
+```
+```{=html}
+<!-- ![Live Inspection](docs/images/live_inspection.png) -->
+```
+### Inspection History
+
+```{=html}
+<!-- Replace with your inspection history screenshot -->
+```
+```{=html}
+<!-- ![Inspection History](docs/images/history.png) -->
+```
+## 9. Project Structure
+
+The following is a representative project structure. Update it to match
+the final repository contents.
+
+``` text
+tomatoes-quality-classification/
+├── app/                    # Desktop application and UI
+├── core/                   # Core processing components
+├── data/                   # Data-related resources
+├── dataset_module/         # Dataset processing utilities
+├── model/                  # Model files (e.g. best.onnx)
+├── scripts/                # Supporting scripts
+├── main.py                 # Application entry point (verify filename)
+├── requirements.txt        # Python dependencies
+├── README.md
+└── .gitignore
+```
+
+## 10. Installation
+
+### Prerequisites
+
+-   Python version compatible with the packages in `requirements.txt`.
+-   NVIDIA GPU and compatible drivers for CUDA-accelerated inference
+    (optional).
+-   Hikrobot MVS SDK for Hikrobot industrial camera support.
+-   USB webcam for webcam-based testing (optional).
+
+### Clone the Repository
+
+``` bash
+git clone https://github.com/nguyenvietdungk66/tomatoes-quality-classification.git
+cd tomatoes-quality-classification
+```
+
+### Create and Activate a Virtual Environment
+
+**Windows (PowerShell):**
+
+``` powershell
 python -m venv .venv
+.venv\\Scripts\\Activate.ps1
 ```
 
-On Windows PowerShell:
+**Linux:**
 
-```powershell
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-On Linux/macOS:
-
-```bash
+``` bash
+python3 -m venv .venv
 source .venv/bin/activate
+```
+
+### Install Dependencies
+
+``` bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-If `requirements.txt` has not yet been created, install the packages used by the project (for example, `onnxruntime` or `onnxruntime-gpu`, and `opencv-python`) and record the tested versions in that file.
+For Hikrobot cameras, install the MVS SDK separately and ensure its
+required runtime libraries and drivers are available to the application.
 
-## Model
+## 11. Running the Application
 
-Place the exported ONNX model in the location expected by the inference configuration. The example project structure uses:
+Run the application using the entry point provided in the repository.
+For example, if the project entry point is `main.py`:
 
-```text
-models/best.onnx
+``` bash
+python main.py
 ```
 
-Update the model path in the relevant configuration or Python entry point if your model is stored elsewhere.
+If your repository uses a different entry point, replace the command
+with the appropriate one.
 
-The ONNX model is a trained artifact. Its availability, size, training data, and usage rights should be documented separately where applicable.
+After launching:
 
-## Run inference
+1.  Open **Camera Setup**.
+2.  Select Hikrobot or USB camera.
+3.  Scan for available devices and connect to a camera.
+4.  Navigate to **Live Inspection**.
+5.  Start the inspection process.
+6.  Review detection results and inspection statistics.
+7.  Open **History** to review recorded inspection sessions.
 
-Run the project's camera entry point from the repository root, for example:
+## 12. Current Scope and Future Development
 
-```bash
-python onnx/real_time_onnx.py
-```
+### Implemented
 
-If your actual entry point or folder structure differs, use the corresponding script and update this command.
+-   Tomato detection and quality classification using YOLO26n.
+-   ONNX Runtime inference integration.
+-   Hikrobot industrial camera and USB webcam support.
+-   Real-time inspection visualization.
+-   Inspection statistics and history management.
+-   Desktop application workflow.
 
-## Dataset and training
+### Future Development
 
-Large datasets are intentionally excluded from this repository by default. Download the dataset separately and place it in the directory expected by the training configuration.
+-   PLC communication and industrial control integration.
+-   Conveyor synchronization.
+-   Automatic product sorting using pneumatic or servo actuators.
+-   Further optimization for different deployment hardware.
 
-Before training, check:
+**Current scope:** The application focuses on the Computer Vision
+inspection pipeline and desktop software. PLC-based conveyor control and
+physical sorting are not yet integrated.
 
-- The dataset directory paths in the YOLO data configuration.
-- The class names and class IDs.
-- The train/validation/test split.
-- The model architecture and training parameters.
+## 13. License
 
-Do not commit datasets, private data, or large training outputs unless you have permission and a clear reason to distribute them.
-
-## Git workflow
-
-```bash
-git add .
-git commit -m "Describe your changes"
-git push
-```
-
-## Notes
-
-- Detection performance depends on the model, camera, lighting, image resolution, and inference provider.
-- GPU acceleration requires a compatible runtime, drivers, and hardware. CPU inference may be used where GPU support is unavailable.
-- This repository is a software project; validate the complete camera, actuator, and robot/PLC safety chain before any industrial deployment.
-
-## License
-
-This project is distributed under the MIT License. See [LICENSE](LICENSE).
-
-If you distribute a dataset, pretrained weights, or third-party code, check their individual licenses. The MIT license for this repository does not automatically grant rights to those materials.
+Add the appropriate license for this repository before distributing or
+reusing the project.
