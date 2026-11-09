@@ -1,6 +1,6 @@
 # 🍅 Tomato Quality Inspection System
 
-![hmi](images/hmi.jpg)
+   ![hmi](images/hmi.jpg)
 
 An AI-powered desktop application for automated tomato quality
 inspection using Deep Learning and industrial machine vision.
