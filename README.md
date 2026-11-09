@@ -1,4 +1,4 @@
-<img width="588" height="133" alt="image" src="https://github.com/user-attachments/assets/5fe1fb5f-f758-4959-a3d7-485096d6634e" /># 🍅 Tomato Quality Inspection System
+# 🍅 Tomato Quality Inspection System
 
 An AI-powered desktop application for automated tomato quality
 inspection using Deep Learning and industrial machine vision.
@@ -92,12 +92,13 @@ visualization, inspection statistics, and inspection history.
 A custom object detection dataset was prepared for two tomato quality
 classes.
 
-Dataset preparation included: - Organizing images and YOLO-format
-annotations. - Checking image-label consistency. - Identifying and
-removing invalid or missing-label samples. - Preparing training,
-validation, and test splits.
+Dataset preparation included: 
+- Organizing images and YOLO-format annotations.
+- Checking image-label consistency.
+- Identifying and removing invalid or missing-label samples.
+- Preparing training, validation, and test splits.
 
-![Dataset Format](images/data_format.png)
+  ![Dataset Format](images/data_format.png)
 
 
 ## 5. Model Training and Evaluation
