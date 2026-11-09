@@ -118,8 +118,6 @@ computational efficiency for real-time deployment.
 
 ### Test Dataset Results
 
-The trained model was evaluated on an independent test dataset.
-
 | Metric | Result |
 |---|---:|
 | Precision | 92.17% |
