@@ -104,7 +104,7 @@ validation, and test splits.
     🍅    Fresh Tomato        0
     🍂    Rotten Tomato       1
 
-## 6. Model Training and Evaluation
+## 5. Model Training and Evaluation
 
 The YOLO26n model was selected to balance detection accuracy and
 computational efficiency for real-time deployment.
@@ -130,7 +130,7 @@ The trained model was evaluated on an independent test dataset.
   mAP@50        96.95%
   mAP@50-95     95.01%
 
-## 7. ONNX Deployment and Performance
+## 6. ONNX Deployment and Performance
 
 The trained PyTorch model was exported to ONNX format and integrated
 into the application using ONNX Runtime.
@@ -173,7 +173,7 @@ individual model inference. The two values should not be expected to be
 exact reciprocals because they may be measured at different stages of
 the pipeline.
 
-## 8. Application Interface
+## 7. Application Interface
 
 
 ### Dashboard
@@ -201,15 +201,14 @@ Live inspection on hikrobot camera
 
 ![Settings](images/settings.png)
 
-## 9. Project Structure
+## 8. Project Structure
 
-The following is a representative project structure. Update it to match
-the final repository contents.
+The following is a representative project structure.
 
 ``` text
 tomatoes-quality-classification/
 ├── app/
-│   ├── camera_setup/       # Camera setup page and related application components
+│   ├── camera_setup/       # Camera integration and camera libraries
 │   ├── config/             # Application configuration
 │   ├── core/               # Application-level core components
 │   ├── data/               # Application data resources
@@ -218,9 +217,6 @@ tomatoes-quality-classification/
 │   ├── services/           # Application services
 │   ├── ui/                 # Desktop user interface
 │   └── main.py             # Application package entry point
-├── camera_setup/           # Camera integration and camera libraries
-├── core/                   # Core computer vision and inference components
-├── images/                 # Images and visual assets
 ├── model/                  # Model files, including the deployed ONNX model
 ├── scripts/                # Supporting and utility scripts
 ├── test_images/            # Images used for testing
@@ -234,14 +230,21 @@ tomatoes-quality-classification/
 └── train.py                # Model training script
 ```
 
-## 10. Installation
+## 9. Installation
 
 ### Prerequisites
 
 -   Python version compatible with the packages in `requirements.txt`.
 -   NVIDIA GPU and compatible drivers for CUDA-accelerated inference
     (optional).
--   Hikrobot MVS SDK for Hikrobot industrial camera support.
+-   Hikrobot MVS SDK for Hikrobot industrial camera support. Visit the official [Hikrobot Download Center](https://www.hikrobotics.com/en/machinevision/service/download).
+
+**How to Install MVS**
+``` bash
+Run the downloaded installer as Administrator  -> Accept the license agreement -> Follow the installation wizard -> Make sure the GigE camera driver is selected during installation 
+-> This is required for GigE Vision cameras such as the Hikrobot MV-CE200GC -> Connect the Hikrobot camera to your computer using an Ethernet cable.
+```
+
 -   USB webcam for webcam-based testing (optional).
 
 ### Clone the Repository
@@ -277,19 +280,19 @@ pip install -r requirements.txt
 For Hikrobot cameras, install the MVS SDK separately and ensure its
 required runtime libraries and drivers are available to the application.
 
-## 11. Running the Application
+## 10. Running the Application
 
 Run the application using the entry point provided in the repository.
-For example, if the project entry point is `main.py`:
+For example, if the project entry point is `app/main.py`:
 
 ``` bash
-python main.py
+python app/main.py
 ```
 
 If your repository uses a different entry point, replace the command
 with the appropriate one.
 
-After launching:
+After launching the application:
 
 1.  Open **Camera Setup**.
 2.  Select Hikrobot or USB camera.
@@ -298,30 +301,17 @@ After launching:
 5.  Start the inspection process.
 6.  Review detection results and inspection statistics.
 7.  Open **History** to review recorded inspection sessions.
+8.  Open **Settings** to configure the inspection parameters.
 
-## 12. Current Scope and Future Development
+## 11. Technology Stack
 
-### Implemented
-
--   Tomato detection and quality classification using YOLO26n.
--   ONNX Runtime inference integration.
--   Hikrobot industrial camera and USB webcam support.
--   Real-time inspection visualization.
--   Inspection statistics and history management.
--   Desktop application workflow.
-
-### Future Development
-
--   PLC communication and industrial control integration.
--   Conveyor synchronization.
--   Automatic product sorting using pneumatic or servo actuators.
--   Further optimization for different deployment hardware.
-
-**Current scope:** The application focuses on the Computer Vision
-inspection pipeline and desktop software. PLC-based conveyor control and
-physical sorting are not yet integrated.
-
-## 13. License
-
-Add the appropriate license for this repository before distributing or
-reusing the project.
+  Component              Technology
+  ---------------------- -------------------------------
+  Programming Language   Python
+  Deep Learning          PyTorch, Ultralytics YOLO26
+  Model Deployment       ONNX, ONNX Runtime
+  Computer Vision        OpenCV
+  GUI Framework          PySide6 / Qt
+  Industrial Camera      Hikrobot MVS SDK
+  Database               SQLite
+  Multithreading         QThread, Qt Signals and Slots
