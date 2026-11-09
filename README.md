@@ -179,30 +179,28 @@ the pipeline.
 ### Dashboard
 
 ![Dashboard](images/dashboard.png)
+
 ### Camera Setup
 
-```{=html}
-<!-- Replace with your camera setup screenshot -->
-```
-```{=html}
-<!-- ![Camera Setup](docs/images/camera_setup.png) -->
-```
+![Camera Setup](images/camera_setup.png)
+
+
 ### Live Inspection
 
-```{=html}
-<!-- Replace with your live inspection screenshot -->
-```
-```{=html}
-<!-- ![Live Inspection](docs/images/live_inspection.png) -->
-```
+Live inspection on webcam
+![Webcam](images/live_inspection.png)
+
+Live inspection on hikrobot camera
+![Dashboard](images/hikrobot.png)
+
 ### Inspection History
 
-```{=html}
-<!-- Replace with your inspection history screenshot -->
-```
-```{=html}
-<!-- ![Inspection History](docs/images/history.png) -->
-```
+![Dashboard](images/history.png)
+
+### Settings
+
+![Settings](images/settings.png)
+
 ## 9. Project Structure
 
 The following is a representative project structure. Update it to match
