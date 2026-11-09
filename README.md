@@ -18,10 +18,10 @@ camera integration, and desktop application development.
 The application detects tomatoes in camera frames and classifies them
 into two quality categories:
 
-   Class  Label            Class ID
+  | Class | Label        |    Class ID    |
   ------- --------------- ----------
-    🍅    Fresh Tomato        0
-    🍂    Rotten Tomato       1
+  |  🍅   |   Fresh Tomato   |    0    |
+  |  🍂   |   Rotten Tomato  |    1    |
 
 The desktop application provides live inspection, detection
 visualization, inspection statistics, and inspection history.
