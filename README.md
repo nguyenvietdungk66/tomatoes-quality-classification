@@ -1,4 +1,4 @@
-# 🍅 Tomato Quality Inspection System
+<img width="588" height="133" alt="image" src="https://github.com/user-attachments/assets/5fe1fb5f-f758-4959-a3d7-485096d6634e" /># 🍅 Tomato Quality Inspection System
 
 An AI-powered desktop application for automated tomato quality
 inspection using Deep Learning and industrial machine vision.
@@ -97,12 +97,8 @@ annotations. - Checking image-label consistency. - Identifying and
 removing invalid or missing-label samples. - Preparing training,
 validation, and test splits.
 
-### Dataset Classes
+[Dataset Format](images/data_format.png)
 
-   Class  Label            Class ID
-  ------- --------------- ----------
-    🍅    Fresh Tomato        0
-    🍂    Rotten Tomato       1
 
 ## 5. Model Training and Evaluation
 
@@ -111,24 +107,24 @@ computational efficiency for real-time deployment.
 
 ### Training Configuration
 
-  Parameter             Value
-  ------------------ ------------
-  Model                YOLO26n
-  Input Image Size    640 × 640
-  Epochs                 100
-  Batch Size              32
-  Training Device     NVIDIA GPU
+| Parameter | Value |
+|---|---|
+| Model | YOLO26n |
+| Input Image Size | 640 × 640 |
+| Epochs | 100 |
+| Batch Size | 32 |
+| Training Device | NVIDIA GPU (GeForce RTX 4070) |
 
 ### Test Dataset Results
 
 The trained model was evaluated on an independent test dataset.
 
-  Metric        Result
-  ----------- --------
-  Precision     92.17%
-  Recall        95.77%
-  mAP@50        96.95%
-  mAP@50-95     95.01%
+| Metric | Result |
+|---|---:|
+| Precision | 92.17% |
+| Recall | 95.77% |
+| mAP@50 | 96.95% |
+| mAP@50-95 | 95.01% |
 
 ## 6. ONNX Deployment and Performance
 
@@ -159,12 +155,12 @@ YOLO26n (PyTorch)
 The integrated application was tested with a Hikrobot industrial camera
 during a one-hour continuous operation test.
 
-  Metric                               Result
-  -------------------------- ----------------
-  Processing Throughput             27.94 FPS
-  Inference Latency            23.92 ms/frame
-  Continuous Test Duration             1 hour
-  Inference Engine               ONNX Runtime
+| Metric | Result |
+|---|---:|
+| Processing Throughput | 27.94 FPS |
+| Inference Latency | 23.92 ms/frame |
+| Continuous Test Duration | 1 hour |
+| Inference Engine | ONNX Runtime |
 
 **Note:** Processing throughput and inference latency are different
 measurements. Throughput represents the number of frames processed per
